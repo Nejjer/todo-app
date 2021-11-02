@@ -1,0 +1,223 @@
+/*Обнуление*/
+*{padding: 0;margin: 0;border: 0;}
+*,*:before,*:after{-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+nav,footer,header,aside{display: block;}
+html,body{height:100%;width:100%;font-size:100%;line-height:1;font-size:14px;-ms-text-size-adjust:100%;-moz-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+input,button,textarea{font-family:inherit;}
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a,a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
+/*********************************************************/
+
+
+
+body{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 20px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: white;
+    width: 100%;
+    height: 91px;
+    background-color: #609FFF;
+}
+
+.home-page{
+    max-width: 1024px;
+    margin: auto;
+    position: relative;
+    padding-bottom: 70px;
+}
+
+.title{
+    padding: 31px 0 23px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.title__date{
+    display: flex;
+    align-items: center;
+}
+.date{
+    padding: 0 5px;
+}
+.date-day{
+    font-size: 44px;
+    line-height: 52px;
+    letter-spacing: 0;
+    text-align: left;
+    display: inline;
+}
+.date-month{
+    font-size: 16px;
+    line-height: 19px;
+    text-align: left;
+}
+.date-year{
+    font-size: 16px;
+    line-height: 19px;
+    text-align: left;
+    color: #545454;
+}
+.title__day-of-week{
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.todo-item{
+    padding-right: 17px;
+    height: 44px;
+    border-bottom: 1px solid #DEDEDE;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.completeness_done{
+    text-decoration: line-through;
+}
+
+.todo-item__text{
+    display: flex;
+    align-items: center;
+}
+
+.todo-item__item-title{
+    color: #545454;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: left;
+}
+
+.todo-item__item-description{
+    color: #5e5e5e;
+    font-size: 13px;
+    padding: 0 0 0 20px;
+}
+
+.todo-item__button{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    transition: background-color 1s;
+}
+
+.todo-item__button:hover{
+    background-color: #a8a8a8;
+}
+
+.completeness_done .todo-item__button{
+    background-color: #3EF520;
+    background-image: url("image/complete.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.todo-add-button{
+    color: #FFFFFF;
+    font-size: 20px;
+    height: 56px;
+    width: 56px;
+    border-radius: 50%;
+    background-color: #609FFF;
+    position: absolute;
+    right: 18px;
+    bottom: 5px;
+    transition: background-color 1s;
+}
+
+.todo-add-button:hover{
+    background-color: #1472ff;
+}
+.adding-item-main{
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(1, 1, 1, 0.28);
+    padding-top: 280px;
+}
+.adding-item {
+    max-width: 800px;
+    height: 232px;
+    background: #FFFFFF;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    margin: auto;
+    padding: 20px;
+}
+.adding-item__title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 35px;
+    color: #545454;
+
+}
+
+.adding-item__description {
+    padding-top: 20px;
+    font-size: 16px;
+    line-height: 19px;
+    height: 43px;
+}
+.adding-item__input {
+    margin-top: 30px;
+    width: 100%;
+    height: 32px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #DEDEDE;
+}
+.adding-item__buttons {
+    padding-top: 18px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.adding-item__button-cancel {
+    height: 44px;
+    width: 62px;
+    background-color: transparent;
+    font-size: 16px;
+    line-height: 19px;
+    color: #828282;
+    transition: background-color 1s;
+}
+.adding-item__button-cancel:hover{
+    background-color: #dcdcdc;
+}
+.adding-item__button-add:hover{
+    background-color: #dcdcdc;
+}
+
+.adding-item__button-add {
+    height: 44px;
+    width: 66px;
+    background-color: transparent;
+    color: #609FFF;
+    font-size: 16px;
+    line-height: 19px;
+    transition: background-color 1s;
+}
+
