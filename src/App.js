@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import "./style.css"
 import AddingTask from "./AddingTask";
 import Task from "./Task";
+import DateComponent from "./DateComponent";
 
 function handleShowCreating(style, setStyle){
     setStyle({display: "block"});
@@ -10,6 +11,8 @@ function handleShowCreating(style, setStyle){
 function handleHiddenCreating(style, setStyle){
     setStyle({display: "none"});
 }
+
+//function handleSetStyleEmptyPlace{setS}
 
 function handleDeleteTask(tasks, setTasks, deleteId){
     let newArr = tasks.slice();
@@ -23,9 +26,19 @@ function handleDeleteTask(tasks, setTasks, deleteId){
 
 function App() {
 
-  const [style, setStyle] = useState({display: "none"});
+  const [styleAddingBlock, setStyleAddingBlock] = useState({display: "none"});
+  const [styleEmptyPlace, setStyleEmptyPlace] = useState({display: "none"})
   const [taskId, setTaskId] = useState(0);
   const [tasks, setTasks] = useState([]);
+
+/*  useEffect(() => {
+      if (tasks.length === 0){
+          setStyleEmptyPlace( {display: "flex"})
+      }else{
+          setStyleEmptyPlace( {display: "none"})
+      }
+      }
+  )*/
 
   const listTasks = tasks.map(element =>
       <li key={element.id}> <Task title={element.title} deleteTask={handleDeleteTask} id={element.id} tasks={tasks} setTasks={setTasks}/> </li>
@@ -38,27 +51,19 @@ function App() {
         </header>
 
         <div className="home-page">
-          <div className="title">
-            <div className="title__date">
-              <div className="date-day">12</div>
-              <div className="date">
-                <div className="date-month">APR</div>
-                <div className="date-year">2021</div>
-              </div>
-            </div>
-            <div className="title__day-of-week">
-              TUESDAY
-            </div>
-          </div>
+          <DateComponent/>
           <div>
+              <div style={styleEmptyPlace} className="empty-place">
+                  To create a task, click on the button.
+              </div>
               <ul>
                   {listTasks}
               </ul>
-            <button onClick={() => {handleShowCreating(style,setStyle)}} className="todo-add-button">+</button>
+            <button onClick={() => {handleShowCreating(styleAddingBlock,setStyleAddingBlock)}} className="todo-add-button">+</button>
           </div>
         </div>
-        <div style={style} className="adding-item-main">
-          <AddingTask style={style} setStyle={setStyle} tasks={tasks} setTasks={setTasks} taskId={taskId} setTaskId={setTaskId} hiddenCreating={handleHiddenCreating}/>
+        <div style={styleAddingBlock} className="adding-item-main">
+          <AddingTask styleAddingBlock={styleAddingBlock} setStyleAddingBlock={setStyleAddingBlock} tasks={tasks} setTasks={setTasks} taskId={taskId} setTaskId={setTaskId} hiddenCreating={handleHiddenCreating}/>
         </div>
       </div>
   );
