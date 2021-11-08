@@ -27,18 +27,9 @@ function handleDeleteTask(tasks, setTasks, deleteId){
 function App() {
 
   const [styleAddingBlock, setStyleAddingBlock] = useState({display: "none"});
-  const [styleEmptyPlace, setStyleEmptyPlace] = useState({display: "none"})
   const [taskId, setTaskId] = useState(0);
   const [tasks, setTasks] = useState([]);
 
-/*  useEffect(() => {
-      if (tasks.length === 0){
-          setStyleEmptyPlace( {display: "flex"})
-      }else{
-          setStyleEmptyPlace( {display: "none"})
-      }
-      }
-  )*/
 
   const listTasks = tasks.map(element =>
       <li key={element.id}> <Task title={element.title} deleteTask={handleDeleteTask} id={element.id} tasks={tasks} setTasks={setTasks}/> </li>
@@ -53,7 +44,7 @@ function App() {
         <div className="home-page">
           <DateComponent/>
           <div>
-              <div style={styleEmptyPlace} className="empty-place">
+              <div style={tasks.length===0?{display: "flex"}:{display: "none"}} className="empty-place">
                   To create a task, click on the button.
               </div>
               <ul>
