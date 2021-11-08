@@ -1,23 +1,22 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import "./style.css"
 import AddingTask from "./AddingTask";
 import Task from "./Task";
 import DateComponent from "./DateComponent";
 
-function handleShowCreating(style, setStyle){
+function handleShowCreating(style, setStyle) {
     setStyle({display: "block"});
 }
 
-function handleHiddenCreating(style, setStyle){
+function handleHiddenCreating(style, setStyle) {
     setStyle({display: "none"});
 }
 
-//function handleSetStyleEmptyPlace{setS}
 
-function handleDeleteTask(tasks, setTasks, deleteId){
+function handleDeleteTask(tasks, setTasks, deleteId) {
     let newArr = tasks.slice();
-    for (let i = 0; i < newArr.length; i++){
-        if (newArr[i].id === deleteId){
+    for (let i = 0; i < newArr.length; i++) {
+        if (newArr[i].id === deleteId) {
             newArr.splice(i, 1);
         }
     }
@@ -26,38 +25,49 @@ function handleDeleteTask(tasks, setTasks, deleteId){
 
 function App() {
 
-  const [styleAddingBlock, setStyleAddingBlock] = useState({display: "none"});
-  const [taskId, setTaskId] = useState(0);
-  const [tasks, setTasks] = useState([]);
+    const [styleAddingBlock, setStyleAddingBlock] = useState({display: "none"});
+    const [taskId, setTaskId] = useState(0);
+    const [tasks, setTasks] = useState([]);
 
+    const listTasks = tasks.map(element =>
+        <li key={element.id}><Task title={element.title}
+                                   deleteTask={handleDeleteTask}
+                                   id={element.id}
+                                   tasks={tasks}
+                                   setTasks={setTasks}/></li>);
 
-  const listTasks = tasks.map(element =>
-      <li key={element.id}> <Task title={element.title} deleteTask={handleDeleteTask} id={element.id} tasks={tasks} setTasks={setTasks}/> </li>
-  );
+    return (
+        <div>
+            <header>
+                <span>My Todo List</span>
+            </header>
 
-  return (
-      <div>
-        <header>
-          <span>My Todo List</span>
-        </header>
-
-        <div className="home-page">
-          <DateComponent/>
-          <div>
-              <div style={tasks.length===0?{display: "flex"}:{display: "none"}} className="empty-place">
-                  To create a task, click on the button.
-              </div>
-              <ul>
-                  {listTasks}
-              </ul>
-            <button onClick={() => {handleShowCreating(styleAddingBlock,setStyleAddingBlock)}} className="todo-add-button">+</button>
-          </div>
+            <div className="home-page">
+                <DateComponent/>
+                <div>
+                    <div style={tasks.length === 0 ? {display: "flex"} : {display: "none"}} className="empty-place">
+                        To create a task, click on the button.
+                    </div>
+                    <ul>
+                        {listTasks}
+                    </ul>
+                    <button onClick={() => {
+                        handleShowCreating(styleAddingBlock, setStyleAddingBlock)
+                    }} className="todo-add-button">+
+                    </button>
+                </div>
+            </div>
+            <div style={styleAddingBlock} className="adding-item-main">
+                <AddingTask styleAddingBlock={styleAddingBlock}
+                            setStyleAddingBlock={setStyleAddingBlock}
+                            tasks={tasks}
+                            setTasks={setTasks}
+                            taskId={taskId}
+                            setTaskId={setTaskId}
+                            hiddenCreating={handleHiddenCreating}/>
+            </div>
         </div>
-        <div style={styleAddingBlock} className="adding-item-main">
-          <AddingTask styleAddingBlock={styleAddingBlock} setStyleAddingBlock={setStyleAddingBlock} tasks={tasks} setTasks={setTasks} taskId={taskId} setTaskId={setTaskId} hiddenCreating={handleHiddenCreating}/>
-        </div>
-      </div>
-  );
+    );
 }
 
 export default App;

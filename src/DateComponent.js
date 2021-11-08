@@ -1,9 +1,6 @@
+function DateComponent(props) {
 
-
-
-function DateComponent(props){
-
-    let monthsString =  ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    let monthsString = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     let daysOFWeekString = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
     let date = new Date();
@@ -13,10 +10,7 @@ function DateComponent(props){
     const year = date.getFullYear();
     const dayOfWeek = daysOFWeekString[date.getDay()];
 
-
-
-
-    return(
+    return (
         <div className="title">
             <div className="title__date">
                 <div className="date-day">{day}</div>

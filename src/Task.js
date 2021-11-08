@@ -1,6 +1,4 @@
-
 function Task(props){
-
 
     return(
         <li>
